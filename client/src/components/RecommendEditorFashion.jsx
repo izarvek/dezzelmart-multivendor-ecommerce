@@ -18,7 +18,7 @@ const RecommendEditorFashion = ({image , title , description , price , id}) => {
           <h2 className="poppins-semibold font-semibold mt-3 text-lg">
             {title}
           </h2>
-          <p className="text-gray-500 px-3 self-center">{description}</p>
+          <p className="text-gray-500 px-3 text-center">{description}</p>
           <p className="poppins-regular text-gray-700 mt-2">${price}</p>
         </div>
       </div>
