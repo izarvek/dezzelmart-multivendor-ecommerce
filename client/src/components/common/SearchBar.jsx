@@ -59,9 +59,9 @@ const handleKeyDown = (e) => {
   };
 
   return (
-    <div className="px-4 sm:px-8 md:px-10 lg:px-20 xl:px-40 my-4">
-      {/* Search Bar */}
-      <div className="flex justify-between relative">
+    <div className="px-4 sm:px-8 md:px-10 lg:px-20 xl:px-40 my-4 relative">
+      {/* --- Search Bar --- */}
+      <div className="flex justify-between ">
          {/* Filter Section (Left) */}
         <div className="flex items-center gap-2 sm:rounded-full py-1 px-5 mr-2 sm:border-[1px] sm:border-gray-200">
           <GiSettingsKnobs className="rotate-90 cursor-pointer" />
@@ -69,7 +69,6 @@ const handleKeyDown = (e) => {
             Filter
           </button>
         </div>
-
         {/* Search and Category Section (Center) */}
         <div
           onClick={handleDivClick}
@@ -145,14 +144,14 @@ const handleKeyDown = (e) => {
             </div>
           </div>
         </div>
-
        {/* Recommendation Section (Right) */}
         <div className="flex items-center gap-2 poppins-regular ml-2  rounded-full">
           <IoFilterOutline className="hidden sm:block cursor-pointer w-5 h-5  text-gray-700 hover:text-gray-900" />
           <p className="hidden lg:block text-sm cursor-pointer text-gray-700 hover:text-gray-900">Recommended</p>
         </div>
       </div>
-       <div className={`justify-end relative px-14 md:px-20 mt-1  lg:hidden ${visible ? "flex" : "hidden"}`}>
+      {/* --- Pages Links --- */}
+       <div className={`bg-white mt-1 z-40 absolute right-[4.5rem] sm:right-[7rem] md:right-[7.5rem] lg:hidden ${visible ? "flex" : "hidden"}`}>
          <ul className="border-[1px] border-gray-200 p-4 flex flex-col justify-end">
           <li onClick={() => {navigate('/explore') , setVisible(false)}} className="text-sm mb-1 md:hidden cursor-pointer border-b border-white hover:border-gray-500">Explore</li>
           <li onClick={() => {navigate('/blogs') , setVisible(false)}} className="text-sm mb-1 md:hidden cursor-pointer border-b border-white hover:border-gray-500">Blogs</li>
@@ -184,7 +183,6 @@ const handleKeyDown = (e) => {
           </div>
         )}
       </div>
-
 
     </div>
   );

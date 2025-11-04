@@ -40,7 +40,7 @@ const UserAccount = () => {
 
       </div>
 
-      <div className='border-[1px] rounded-md p-4 shadow-sm w-[80%]'>
+      <div className='border-[1px] rounded-md p-4 shadow-sm w-[90%] md:w-[80%]'>
 
         <div className='flex justify-between items-center mt-2 pb-6 border-b-[1px] border-gray-200'>
 
@@ -68,7 +68,7 @@ const UserAccount = () => {
 
         <div className='mt-6 pb-6 border-b-[1px]'>
           <h2 className='poppins-medium text-lg'>Personal Detail</h2>
-          <div className='grid grid-cols-2 mt-2 gap-2'>
+          <div className='grid grid-cols-1 md:grid-cols-2 mt-2 gap-2'>
 
             <div className='flex flex-col'>
               <label className='poppins-regular text-sm' htmlFor="fname">First Name</label>
@@ -117,7 +117,7 @@ const UserAccount = () => {
 
         <div className='mt-6'>
           <h2 className='poppins-medium text-lg'>Address</h2>
-          <div className='grid grid-cols-2 mt-2 gap-2'>
+          <div className='grid grid-cols-1 md:grid-cols-2 mt-2 gap-2'>
 
             <div className='flex flex-col'>
               <label className='poppins-regular text-sm' htmlFor="country">Country</label>
