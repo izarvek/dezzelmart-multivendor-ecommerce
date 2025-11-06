@@ -1,10 +1,10 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const RecommendFeaturedFashion = ({ image, title, price , id }) => {
+const RecommendFeaturedFashion = ({ image, title, price , urlSlug }) => {
   const navigate = useNavigate();
   return (
-    <div  onClick={() => navigate(`/product/${id}`)}>
+    <div  onClick={() => navigate(`/product/${urlSlug}`)}>
       <div className="w-full ">
         <img
           className="rounded w-full h-full object-cover hover:brightness-110  transition-all duration-300 ease-out"

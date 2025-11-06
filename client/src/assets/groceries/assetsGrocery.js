@@ -189,7 +189,7 @@ export const groceryProductAssets = [
     description: 'High in vitamins, perfect for steaming or roasting.',
     brand: 'Veggie Delights',
     category: 'Grocery',
-    subCategory: 'Veges',
+    subCategory: 'Fruits',
     price: 3.49,
     discount: 14, // ((3.49 - 2.99) / 3.49 * 100) ≈ 14.3% -> 14
     currency: 'USD',
@@ -207,7 +207,7 @@ export const groceryProductAssets = [
     description: 'Classic white mushrooms, great for sauces and salads.',
     brand: 'Forest Fungi',
     category: 'Grocery',
-    subCategory: 'Veges',
+    subCategory: 'Fruits',
     price: 2.99,
     discount: 17, // ((2.99 - 2.49) / 2.99 * 100) ≈ 16.7% -> 17
     currency: 'USD',
@@ -263,7 +263,7 @@ export const groceryProductAssets = [
     description: 'Ready-to-eat salad with dressing, croutons, and cheese.',
     brand: 'Fresh2Go',
     category: 'Grocery',
-    subCategory: 'Veges',
+    subCategory: 'Fruits',
     price: 7.99,
     discount: 19, // ((7.99 - 6.49) / 7.99 * 100) ≈ 18.7% -> 19
     currency: 'USD',
@@ -282,7 +282,7 @@ export const groceryProductAssets = [
     description: 'Pre-made salad with grilled chicken, romaine lettuce, and parmesan.',
     brand: 'Fresh2Go',
     category: 'Grocery',
-    subCategory: 'Veges',
+    subCategory: 'Fruits',
     price: 8.99,
     discount: 17, // ((8.99 - 7.49) / 8.99 * 100) ≈ 16.68% -> 17
     currency: 'USD',
@@ -300,7 +300,7 @@ export const groceryProductAssets = [
     description: 'Vegan-friendly salad with chickpeas, cucumbers, and lemon dressing.',
     brand: 'VeggieBoost',
     category: 'Grocery',
-    subCategory: 'Veges',
+    subCategory: 'Fruits',
     price: 5.49,
     discount: 18, // ((5.49 - 4.49) / 5.49 * 100) ≈ 18.21% -> 18
     currency: 'USD',
@@ -571,7 +571,7 @@ export const groceryProductAssets = [
   {
     _id: '659f8c1f0102030405060735',
     sku: 'GR-BAK-GERMAN',
-    title: 'Traditional German Rye Bread',
+    title: 'Traditional Germaan Rye Bread',
     description: 'Dense, hearty rye loaf with deep, rustic flavor.',
     brand: 'Artisan Bakes',
     category: 'Grocery',

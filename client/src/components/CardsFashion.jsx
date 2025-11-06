@@ -55,7 +55,7 @@ const CardsFashion = () => {
 
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-20 gap-6">
         {filterProducts().map((product, i) => (
-          <div onClick={() => navigate(`/product/${product._id}`)}  key={i}>
+          <div onClick={() => navigate(`/product/${product.urlSlug}`)}  key={i}>
             <div  className="relative">
               <div className="w-full aspect-[5/6] overflow-hidden">
                 <img

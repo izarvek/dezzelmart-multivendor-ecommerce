@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { v4 as uuidv4 } from 'uuid';
 import { searchSuggestions } from "../../assets/visitor/assetsVisitor.js";
 import { CiSearch } from "react-icons/ci";
 import { IoFilterOutline } from "react-icons/io5";
@@ -6,27 +7,37 @@ import { GiSettingsKnobs } from "react-icons/gi";
 import { SlCloudUpload } from "react-icons/sl";
 import { IoIosArrowDown } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setSearchedViaSearchBar } from "../../features/ProductSlice.js";
 
 const SearchBar = () => {
   const inputRef = useRef(null);
+  const requestId = uuidv4();
   const [active, setActive] = useState("Fashion");
   const [focused, setFocused] = useState(false);
   const [search, setSearch] = useState("");
   const [filteredSuggestions, setFilteredSuggestions] = useState([]);
-  const [visible , setVisible] = useState(false)
-
+  const [visible , setVisible] = useState(false);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
 const handleKeyDown = (e) => {
   if (e.key === 'Enter') {
-    e.preventDefault(); 
-    console.log("Search initiated for:", search);
+    e.preventDefault();
+    // Construct query parameters
+    const params = new URLSearchParams();
+    params.append('q', search); 
+    params.append('as', 'on'); 
+    params.append('as-show', 'on'); 
+    params.append('requestId', requestId);
+    navigate(`/search?${params.toString()}`);
+    dispatch(setSearchedViaSearchBar(search));
+    setSearch("");
     setFilteredSuggestions([]);
     setFocused(false);
-    inputRef.current.blur(); 
+    inputRef.current.blur();
   }
 };
-
 
   useEffect(() => {
     if (search.trim().length > 0) {

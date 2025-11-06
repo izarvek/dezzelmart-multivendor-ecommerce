@@ -236,7 +236,7 @@ export const recommendAssets = [
   {
     _id: "68f5fac9db3522c28e0c7d62",
     sku: 'TSHIRT-MG-V',
-    title: 'Men\'s Dark Green V-Neck T-shirt',
+    title: 'Man\'s Dark Green V-Neck T-shirt',
     sizes : [ 'S', 'M', 'L', 'XL' ],
     description: 'Soft cotton blend, ideal for casual wear.',
     brand: 'UrbanStyle',
@@ -274,7 +274,7 @@ export const recommendAssets = [
   {
     _id: "68f5fac9db3522c28e0c7d64",
     sku: 'TSHIRT-MW-CREW',
-    title: 'Men\'s Classic White Crewneck T-shirt',
+    title: 'Man\'s Classic White Crewneck T-shirt',
     sizes : [ 'S', 'M', 'L', 'XL' , 'XXL' ],
     description: 'Essential, breathable, and pre-shrunk cotton.',
     brand: 'StapleWear',
@@ -316,7 +316,7 @@ export const recommendEditorAssets = [
   {
     _id: "68f5fac9db3522c28e0c7d66",
     sku: 'PANT-M-CLAS-NVY',
-    title: "Men's Classic Slim-Fit Chinos",
+    title: "Man's Classic Slim-Fit Chinos",
     sizes : [ 'M', 'L', 'XL' ],
     description: "Experience comfort and style with these versatile men's pants, perfect for both casual and formal occasions.",
     brand: 'Forma',
@@ -380,11 +380,11 @@ export const fashionTrendyAssets = [
   {
     _id: "68f5fac9db3522c28e0c7d69",
     sku: 'TSHIRT-M-WHITE-SUM',
-    title: "Men's Lightweight Summer T-Shirt",
+    title: "Man's Lightweight Summer T-Shirt",
     sizes : [ 'S', 'M', 'L', 'XL' ],
     description: "Breathable cotton for hot weather comfort.",
     brand: 'AirFlow',
-    category: "Men",
+    category: "Man",
     subCategory: "T-Shirt", // Corrected 'Dress' to 'T-Shirt'
     price: 89.99,
     discount: 10,
@@ -452,11 +452,11 @@ export const fashionTrendyAssets = [
   {
     _id: "68f5fac9db3522c28e0c7d73",
     sku: 'TSHIRT-M-CREW-ESS',
-    title: "Men's Essential Crewneck T-Shirt",
+    title: "Women's Essential Crewneck T-Shirt",
     sizes : [ 'S', 'M', 'L', 'XL' , 'XXL' ],
     description: "A comfortable wardrobe must-have in a soft jersey knit.",
     brand: 'BasicsCo',
-    category: "Men",
+    category: "Women",
     subCategory: "T-Shirt",
     price: 24.99,
     discount: 50,
@@ -470,11 +470,11 @@ export const fashionTrendyAssets = [
   {
     _id: "68f5fac9db3522c28e0c7d74",
     sku: 'DRESS-K-SUM-FULL',
-    title: "Kids' Full Summer Dress",
+    title: "Women's Full Summer Dress",
     sizes : [ 'S', 'M', 'L', 'XL' ,],
     description: "Lightweight and fun patterned dress for boys/girls.",
     brand: 'KiddoWear',
-    category: "Kids", // Changed 'Boys' to 'Kids' for versatility
+    category: "Women", // Changed 'Boys' to 'Kids' for versatility
     subCategory: "Dress", // Changed 'T-Shirt' to 'Dress'
     price: 15.50,
     discount: 20,
@@ -488,11 +488,11 @@ export const fashionTrendyAssets = [
   {
     _id: "68f5fac9db3522c28e0c7d75",
     sku: 'SHOE-M-SNEAK-WHT',
-    title: "Men's White Minimalist Sneakers",
+    title: "Man's White Minimalist Sneakers",
     sizes : [ 'S', 'M', 'L', 'XL' , 'XXL' ],
     description: "Clean, classic low-top design with a cushioned sole.",
     brand: 'StreetStep',
-    category: "Men",
+    category: "Man",
     subCategory: "Shoes",
     price: 65.00,
     discount: 30,
@@ -524,11 +524,11 @@ export const fashionTrendyAssets = [
   {
     _id: "68f5fac9db3522c28e0c7d77",
     sku: 'PANT-M-SLIM-FIT',
-    title: "Men's Classic Slim Fit Trousers",
+    title: "Women's Classic Slim Fit Trousers",
     sizes : [ 'S', 'M', 'L', 'XL' , 'XXL' ],
     description: "Stretch fabric for comfort with a neat, modern silhouette.",
     brand: 'FlexFit',
-    category: "Men",
+    category: "Women",
     subCategory: "Pants",
     price: 79.00,
     discount: 20,
@@ -542,11 +542,11 @@ export const fashionTrendyAssets = [
   {
     _id: "68f5fac9db3522c28e0c7d78",
     sku: 'HOODIE-M-FLEECE',
-    title: "Men's Fleece Pullover Hoodie",
+    title: "Man's Fleece Pullover Hoodie",
     sizes : ['XL' , 'XXL' ],
     description: "Warm, soft inner fleece lining for maximum coziness.",
     brand: 'ComfyWear',
-    category: "Men",
+    category: "Man",
     subCategory: "Hoodie",
     price: 49.50,
     discount: 10,
@@ -560,11 +560,11 @@ export const fashionTrendyAssets = [
   {
     _id: "68f5fac9db3522c28e0c7d79",
     sku: 'JACKET-K-PUFFER',
-    title: "Kids' Adventure Puffer Jacket",
+    title: "Women's Adventure Puffer Jacket",
     sizes : [ 'S', 'M', 'L', 'XL' , 'XXL' ],
     description: "Lightweight and warm outerwear for cold weather play.",
     brand: 'Explorer',
-    category: "Kids", // Changed 'Boys' to 'Kids' for versatility
+    category: "Women", // Changed 'Boys' to 'Kids' for versatility
     subCategory: "Jacket",
     price: 59.99,
     discount: 20,
@@ -578,11 +578,11 @@ export const fashionTrendyAssets = [
   {
     _id: "68f5fac9db3522c28e0c7d80",
     sku: 'JACKET-M-DENIM',
-    title: "Men's Casual Denim Trucker Jacket",
+    title: "Women's Casual Denim Trucker Jacket",
     sizes : [ 'S', 'M', 'L', 'XL' , 'XXL' ],
     description: "Classic wash denim, perfect for layering.",
     brand: 'TrueDenim',
-    category: "Men",
+    category: "Women",
     subCategory: "Jacket",
     price: 89.90,
     discount: 5,
@@ -614,11 +614,11 @@ export const fashionTrendyAssets = [
   {
     _id: "68f5fac9db3522c28e0c7d82",
     sku: 'SHOE-M-LOAFER-SUEDE',
-    title: "Men's Brown Suede Loafers",
+    title: "Women's Brown Suede Loafers",
     sizes : [ 'S', 'M', 'L', 'XL' , 'XXL' ],
     description: "Comfortable slip-on style with a sophisticated suede finish.",
     brand: 'FootEase',
-    category: "Men",
+    category: "Women",
     subCategory: "Shoes",
     price: 95.50,
     discount: 25,

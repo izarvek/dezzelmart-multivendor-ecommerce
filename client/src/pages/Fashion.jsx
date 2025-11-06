@@ -19,7 +19,7 @@ const Fashion = () => {
         {
           recommendAssets.map((product , i)=> (
             <div key={i} >
-                <RecommendFeaturedFashion image={product.image} title={product.title} price={product.price} id={product._id} />
+                <RecommendFeaturedFashion image={product.image} title={product.title} price={product.price} urlSlug={product.urlSlug} />
             </div>
           ))
         }
@@ -32,7 +32,7 @@ const Fashion = () => {
         {
           recommendEditorAssets.map((product , i)=> (
             <div key={i} >
-                <RecommendEditorFashion image={product.image} title={product.title} description={product.description} price={product.price } id={product._id} />
+                <RecommendEditorFashion image={product.image} title={product.title} description={product.description} price={product.price } urlSlug={product.urlSlug} />
             </div>
           ))
         }

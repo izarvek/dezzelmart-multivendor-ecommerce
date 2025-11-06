@@ -10,6 +10,7 @@ import Career from "../pages/Career.jsx";
 import Page404 from "../pages/Page404.jsx";
 import AboutUs from "../pages/AboutUs.jsx";
 import ProductDetail from "../pages/ProductDetail.jsx";
+import ProductListing from "../pages/ProductListing.jsx";
 
 export const publicRoutes = [
   // Category Routes
@@ -26,7 +27,9 @@ export const publicRoutes = [
   { path: "/career", element: <Career /> },
 
   // Detail Page Route
-  { path: "/product/:id", element: <ProductDetail /> },
+  { path: "/product/:urlSlug", element: <ProductDetail /> },
   { path: "/404", element: <Page404 /> },
   { path: "/about", element: <AboutUs /> },
+  { path: "/about", element: <AboutUs /> },
+  { path: "/search", element: <ProductListing /> },
 ];

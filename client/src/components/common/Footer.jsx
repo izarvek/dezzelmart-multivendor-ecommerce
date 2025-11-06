@@ -6,7 +6,7 @@ const Footer = () => {
     <div className="">
       <div className="flex flex-col md:flex-row items-start justify-between gap-10 py-10 mt-10  px-4 sm:px-8 md:px-10 lg:px-20 xl:px-40 bg-gray-700">
         <div className="w-full md:w-[35%]">
-          <h1 className="text-3xl text-white">DezzelMart</h1>
+          <h1 className="text-3xl text-white select-none">DezzelMart</h1>
           <p className="max-w-[410px]  mt-6 text-gray-50">
             DezellMart is a trusted brand for eCommerce, offering a wide range
             of quality products at competitive prices. Explore our collection

@@ -10,7 +10,7 @@ import { groceryProductAssets } from "../assets/groceries/assetsGrocery";
 
 const ProductDetail = () => {
 
-  const { id } = useParams();
+  const { urlSlug } = useParams();
 
   const allAssets = [
     // fashionAssets,
@@ -25,13 +25,13 @@ const ProductDetail = () => {
     // groceries
     ...(groceryProductAssets || []),
   ];
-  const product = allAssets.find((product) => product._id === id);
+  const product = allAssets.find((product) => product.urlSlug === urlSlug);
 
   if (!product) {
     return <Page404 />;
   }
 
-  const discountedPrice = (product.price * (1 - product.discount/100)).toFixed(2);
+  const discountedPrice = Math.ceil(product.price * (1 - product.discount/100)).toFixed(2);
 
   const banner = product.image[0];
   const [mainImage, setMainImage] = useState(banner);

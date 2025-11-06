@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   groceryProductCategory: "",
+  searchedViaSearchBar : "",
 };
 
 const userSlice = createSlice({
@@ -10,9 +11,12 @@ const userSlice = createSlice({
   reducers: {
     setGroceryProductCategory: (state, action) => {
       state.groceryProductCategory = action.payload;
-    }
+    },
+    setSearchedViaSearchBar: (state, action) => {
+      state.searchedViaSearchBar = action.payload;
+    },
   }
 });
 
-export const { setGroceryProductCategory } = userSlice.actions;
+export const { setGroceryProductCategory , setSearchedViaSearchBar} = userSlice.actions;
 export default userSlice.reducer;

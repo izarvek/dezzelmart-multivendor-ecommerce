@@ -1,11 +1,11 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const RecommendEditorFashion = ({image , title , description , price , id}) => {
+const RecommendEditorFashion = ({image , title , description , price , urlSlug}) => {
   const navigate = useNavigate();
   return (
     <div>
-      <div onClick={() => navigate(`/product/${id}`)}>
+      <div onClick={() => navigate(`/product/${urlSlug}`)}>
         <div className="w-full aspect-[5/6]">
           <img
             className="rounded w-full h-full object-cover hover:brightness-110 transition-all duration-300 ease-out"

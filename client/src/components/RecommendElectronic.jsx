@@ -16,7 +16,7 @@ const RecommendElectronic = () => {
               {recomendedProducts.map((product, i) => {
                 const {title , price ,discountPrice ,category , image} = product ;
                 return (
-                  <div onClick={() => navigate(`/product/${product._id}`)}  key={i} className="border-[1px] border-gray-300 rounded-lg p-2 lg:p-4 xl:p-6 mb-2">
+                  <div onClick={() => navigate(`/product/${product.urlSlug}`)}  key={i} className="border-[1px] border-gray-300 rounded-lg p-2 lg:p-4 xl:p-6 mb-2">
                     <div className="w-full aspect-[16/12] ">
                       <img
                         className="w-full h-full object-cover"
