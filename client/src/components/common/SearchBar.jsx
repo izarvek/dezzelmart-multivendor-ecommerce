@@ -30,8 +30,8 @@ const handleKeyDown = (e) => {
     params.append('as', 'on'); 
     params.append('as-show', 'on'); 
     params.append('requestId', requestId);
-    navigate(`/search?${params.toString()}`);
     dispatch(setSearchedViaSearchBar(search));
+    navigate(`/search?${params.toString()}`);
     setSearch("");
     setFilteredSuggestions([]);
     setFocused(false);

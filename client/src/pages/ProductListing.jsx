@@ -336,6 +336,17 @@ const ProductListing = () => {
             </select>
           </div>
           
+          {paginatedAssets.length === 0 ? (
+            <div className="flex flex-col  justify-center items-center h-full"> 
+              <h1 class="text-3xl md:text-5xl font-bold text-gray-700">
+              404 Not Found
+             </h1>
+            <div class="h-px w-64 md:w-80 rounded bg-gradient-to-r from-gray-400 to-gray-800 my-5 md:my-7"></div>
+             <p class="md:text-xl text-gray-400 max-w-lg text-center">
+             The page you are looking for does not exist or has been moved.
+            </p>
+            </div>
+          ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
             {paginatedAssets.map((item, i) => {
               return (
@@ -385,10 +396,11 @@ const ProductListing = () => {
               );
             })}
           </div>
+          )}
 
         </div>
       </div>
-      <div className="mt-10">
+      <div className="mt-10 md:ml-60">
         <div className="flex items-center gap-8 justify-center">
           <div
             className={`border-[1px] p-2 rounded-full cursor-pointer ${

@@ -28,12 +28,12 @@ const AboutUs = () => {
         </section>
 
         {/* Founder's Welcome */}
-        <section className="flex flex-col md:flex-row items-center md:items-start gap-16 mb-20 bg-white p-10 rounded-2xl shadow-xl border border-gray-100 transform hover:scale-[1.01] transition-transform duration-300">
+        <section className="flex flex-col md:flex-row items-center md:items-start gap-16 mb-20 bg-white p-10 rounded-2xl shadow-sm border border-gray-100 ">
           <div className="md:w-1/3 text-center flex-shrink-0">
             <img 
               src="https://placehold.co/300x300/6366f1/ffffff?text=Aadhi+Sharma" // Placeholder for Aadhi Sharma's photo
               alt="Aadhi Sharma - Founder of DezzelMart"
-              className="rounded-full w-60 h-60 object-cover mx-auto mb-6 border-6 border-indigo-500 shadow-2xl"
+              className="rounded-full w-60 h-60 object-cover mx-auto mb-6 border-6 border-indigo-500 shadow-sm"
             />
             <h3 className="text-3xl font-bold text-gray-900">Aadhi Sharma</h3>
             <p className="text-indigo-600 font-medium text-lg mt-1">Founder & CEO, DezzelMart</p>

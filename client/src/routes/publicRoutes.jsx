@@ -11,6 +11,7 @@ import Page404 from "../pages/Page404.jsx";
 import AboutUs from "../pages/AboutUs.jsx";
 import ProductDetail from "../pages/ProductDetail.jsx";
 import ProductListing from "../pages/ProductListing.jsx";
+import FAQ from "../pages/FAQ.jsx";
 
 export const publicRoutes = [
   // Category Routes
@@ -32,4 +33,5 @@ export const publicRoutes = [
   { path: "/about", element: <AboutUs /> },
   { path: "/about", element: <AboutUs /> },
   { path: "/search", element: <ProductListing /> },
+  { path: "/faq", element: <FAQ /> },
 ];

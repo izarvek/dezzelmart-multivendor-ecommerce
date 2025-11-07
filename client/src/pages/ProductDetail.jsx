@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaCheckCircle } from "react-icons/fa";
 import Rating from '../components/templates/Rating.jsx'
 import Page404 from './Page404'
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import {recommendAssets,recommendEditorAssets, fashionTrendyAssets } from "../assets/fashion/assetsFashion";
 import { menuAccessoriesAssets } from "../assets//accessories/assetsAccessories";
 import { electronicProducts , recomendedProducts } from "../assets/electronics/assetsElectronics";
@@ -11,6 +11,7 @@ import { groceryProductAssets } from "../assets/groceries/assetsGrocery";
 const ProductDetail = () => {
 
   const { urlSlug } = useParams();
+  const navigate = useNavigate();
 
   const allAssets = [
     // fashionAssets,
@@ -26,6 +27,7 @@ const ProductDetail = () => {
     ...(groceryProductAssets || []),
   ];
   const product = allAssets.find((product) => product.urlSlug === urlSlug);
+  const suggestionProduct = allAssets.filter((items)=> (items.subCategory === product.subCategory || items.category === product.category) && items.urlSlug !== product.urlSlug)
 
   if (!product) {
     return <Page404 />;
@@ -36,11 +38,16 @@ const ProductDetail = () => {
   const banner = product.image[0];
   const [mainImage, setMainImage] = useState(banner);
 
+    useEffect(() => {
+    if (banner) {
+      setMainImage(banner);
+    }
+   }, [product]);
+   
   return (
 
     <div className="px-4 sm:px-8 md:px-10 lg:px-20 xl:px-40 mt-10">
       <div className="flex flex-col md:flex-row gap-8 md:gap-12 lg:gap-20">
-
         <div className="flex gap-3 w-full flex-col-reverse md:flex-row md:w-2/5">
           <div className="flex flex-row md:flex-col gap-3 overflow-x-auto md:overflow-x-visible pb-2 md:pb-0">
             {product.image.map((item, i) => (
@@ -64,11 +71,10 @@ const ProductDetail = () => {
             />
           </div>
         </div>
-
         <div className="w-full md:w-3/5">
-          <div className="border-b-[1px] border-gray-200 pb-6">
-            <h2 className="text-2xl outfit-regular">{product?.title}</h2>
-            <div className="flex gap-2 py-1 md:py-2 bg-white">
+          <div className="border-b-[1px] border-gray-200 pb-2 xl:pb-6">
+            <h2 className="text-2xl md:text-xl xl:text-2xl outfit-regular">{product?.title}</h2>
+            <div className="flex gap-2 py-2 md:py-1 bg-white">
               <Rating rating={product?.rating} />
               <p className="outfit-regular">( {product?.rating} )</p>
               {product.reviewCount && <p className="outfit-regular">Reviews : {product.reviewCount}</p>}
@@ -82,7 +88,7 @@ const ProductDetail = () => {
             </div>
           </div>
 
-          <div className="border-b-[1px] border-gray-200 mt-4 pb-6">
+          <div className="border-b-[1px] border-gray-200 mt-4 pb-4 xl:pb-6">
             <div className="flex gap-2 items-baseline">
               <p className="text-red-600 outfit-semibold text-3xl">${discountedPrice}</p>
               <p className="line-through text-xl outfit-semibold text-gray-400">
@@ -96,24 +102,24 @@ const ProductDetail = () => {
             </div>
           </div>
 
-          <div className="flex gap-4 mt-4 items-center">
+          <div className="flex gap-4 mt-2  xl:mt-4 items-center">
             {product.sizes && <p className="outfit-medium text-lg">Size :</p>}
             <ul className="flex gap-2">
               { product.sizes && product?.sizes?.map((size, i) => (
-               <li key={i} className="border border-gray-500 px-3 py-1 flex items-center justify-center cursor-pointer hover:border-green-500 transition-colors rounded-lg">
+               <li key={i} className="text-sm md:text-base border border-gray-500 px-3 py-1 flex items-center justify-center cursor-pointer hover:border-green-500 transition-colors rounded-lg">
                 {size}
               </li>
               ))}
             </ul>
           </div>
-          <div className="mt-6 flex flex-wrap justify-start gap-4 sm:gap-6 items-center">
-            <button className="bg-[#496e51] hover:bg-[#6c9574] transition-colors duration-200 text-white poppins outfit-regular py-2 px-6 rounded flex-shrink-0">
+          <div className=" mt-4 md:mt-2 xl:mt-6 flex flex-wrap justify-start gap-4 sm:gap-6 items-center">
+            <button className="bg-[#496e51] text-sm hover:bg-[#6c9574] transition-colors duration-200 text-white poppins outfit-regular py-2 px-6 rounded flex-shrink-0">
               Add to Cart
             </button>
-            <button className="bg-[#496e51] hover:bg-[#6c9574] transition-colors duration-200 text-white poppins outfit-regular py-2 px-6 rounded flex-shrink-0">
+            <button className="bg-[#496e51] text-sm hover:bg-[#6c9574] transition-colors duration-200 text-white poppins outfit-regular py-2 px-6 rounded flex-shrink-0">
               Buy Now
             </button>
-            <div className="flex gap-4">
+            <div className="flex gap-4 md:hidden ">
               <button className="border border-gray-400 hover:border-green-500 transition-colors px-4 py-2 outfit-medium rounded text-sm text-gray-700">
                 Add to WishList
               </button>
@@ -124,6 +130,34 @@ const ProductDetail = () => {
           </div>
         </div>
       </div>
+     <div className="mt-14 bg-gray-50 p-4 rounded-md">
+      <div className="">
+        <h1 className="poppins-regular text-2xl">Customers who viewed this item also viewed</h1>
+      </div>
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 mt-4 gap-4">
+        {
+         suggestionProduct.slice(0 , 5).map((items , i)=> (
+          <div key={i}  onClick={() => navigate(`/product/${items.urlSlug}`)}>
+            <div className="aspect-[5/6] overflow-hidden">
+              <img 
+              className="w-full h-full object-cover object-top hover:scale-105 hover:brightness-105 transition-all duration-500 ease-in-out" 
+              src={items.image[0]} 
+              alt="" 
+              />
+            </div>
+            <div>
+              <h2 className="mt-2 outfit-regular text-2xl">{items.title}</h2>
+              <p className="mt-1 outfit-semibold text-xl">${(items.price*(1 - items.discount/100)).toFixed(2)} <span className="line-through text-base text-gray-500 ml-2">${items.price}</span></p>
+              <div className="mt-1 flex gap-2">
+                 <Rating rating={items.rating}/>
+                 <p className="poppins-semibold text-sm">( {items.rating} )</p>
+              </div>
+            </div>
+          </div>
+         ))
+        }
+      </div>
+     </div>
     </div>
   );
 };
