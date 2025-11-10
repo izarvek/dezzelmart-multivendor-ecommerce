@@ -1,7 +1,7 @@
 import React from "react";
 import { CiBookmark } from "react-icons/ci";
 import { CiStar } from "react-icons/ci";
-import { realArticles } from "../assets/blogs/assetsBlogs";
+import { realArticles } from "../../assets/blogs/assetsBlogs";
 
 const CardsBlogs = () => {
   return (

@@ -1,5 +1,5 @@
 import Login from '../pages/user.pages/UserLogin.jsx';
-import SignUp from '../pages/user.pages/UserSignUp.jsx';
+import Register from '../pages/user.pages/UseRegister.jsx';
 import Account from '../pages/user.pages/UserAccount.jsx'
 import Wishlist from '../pages/user.pages/UserWishlist.jsx'
 import Orders from '../pages/user.pages/UserOrders.jsx'
@@ -12,7 +12,7 @@ import UserToVendor from '../pages/user.pages/UserToVendor.jsx'
 
 export const authRoutes = [
   { path: '/login', element: <Login /> },
-  { path: '/register', element: <SignUp/> },
+  { path: '/register', element: <Register/> },
 ];
 
 export const userProfileRoutes = [

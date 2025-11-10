@@ -1,5 +1,5 @@
 import React from "react";
-import { fashionWB } from "../assets/fashion/assetsFashion";
+import { fashionWB } from "../../assets/fashion/assetsFashion";
 import { FaAngleRight } from "react-icons/fa6";
 
 const HeroFashion = () => {

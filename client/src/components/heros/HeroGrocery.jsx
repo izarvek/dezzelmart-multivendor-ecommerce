@@ -1,5 +1,5 @@
 import React from 'react'
-import { groceryBanner } from '../assets/groceries/assetsGrocery'
+import { groceryBanner } from '../../assets/groceries/assetsGrocery'
 
 const HeroGrocery = () => {
   return (

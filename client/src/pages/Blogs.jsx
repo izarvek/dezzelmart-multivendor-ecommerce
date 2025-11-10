@@ -1,6 +1,6 @@
 import React from 'react'
-import HeroBlogs from '../components/HeroBlogs'
-import CardsBlogs from '../components/CardsBlogs'
+import HeroBlogs from '../components/heros/HeroBlogs'
+import CardsBlogs from '../components/cards/CardsBlogs'
 
 const Blogs = () => {
   return (

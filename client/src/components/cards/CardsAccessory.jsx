@@ -1,6 +1,6 @@
 import React from "react";
-import Title from "./templates/Title";
-import { menuAccessoriesAssets } from "../assets/accessories/assetsAccessories";
+import Title from "../templates/Title";
+import { menuAccessoriesAssets } from "../../assets/accessories/assetsAccessories";
 import { useNavigate } from "react-router-dom";
 const CardsAccessory = () => {
   const navigate = useNavigate();

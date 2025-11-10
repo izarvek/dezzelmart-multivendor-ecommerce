@@ -1,5 +1,5 @@
 import React from "react";
-import { accessoryProduct } from "../assets/accessories/assetsAccessories";
+import { accessoryProduct } from "../../assets/accessories/assetsAccessories";
 import { FaArrowRightLong } from "react-icons/fa6";
 
 const HeroAccessories = () => {

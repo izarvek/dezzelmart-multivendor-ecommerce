@@ -1,9 +1,9 @@
 import React from 'react'
-import Title from '../components/templates/Title'
+import Title from '../templates/Title'
 import { FaRegHeart } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa6";
 import { BsCart2 } from "react-icons/bs";
-import { recomendedProducts } from '../assets/electronics/assetsElectronics';
+import { recomendedProducts } from '../../assets/electronics/assetsElectronics';
 import { useNavigate } from 'react-router-dom';
 
 const RecommendElectronic = () => {

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { fashionTrendyAssets } from "../assets/fashion/assetsFashion";
-import Rating from "./templates/Rating";
+import { fashionTrendyAssets } from "../../assets/fashion/assetsFashion";
+import Rating from "../templates/Rating";
 import { useNavigate } from "react-router-dom";
 
 const CardsFashion = () => {
@@ -19,9 +19,7 @@ const CardsFashion = () => {
     return [];
   }
  };
- console.log(filterProducts())
 
-  
   return (
     <div>
       <div className="flex items-center flex-col w-full">
@@ -54,7 +52,7 @@ const CardsFashion = () => {
       </div>
 
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-20 gap-6">
-        {filterProducts().map((product, i) => (
+        {filterProducts().slice(0 , 10).map((product, i) => (
           <div onClick={() => navigate(`/product/${product.urlSlug}`)}  key={i}>
             <div  className="relative">
               <div className="w-full aspect-[5/6] overflow-hidden">

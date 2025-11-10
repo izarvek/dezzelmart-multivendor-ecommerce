@@ -1,7 +1,7 @@
 import React from 'react'
-import HeroGrocery from '../components/HeroGrocery'
+import HeroGrocery from '../components/heros/HeroGrocery'
 import MenuGrocery from '../components/MenuGrocery'
-import CardsGrocery from '../components/CardsGrocery'
+import CardsGrocery from '../components/cards/CardsGrocery'
 
 const Grocery = () => {
   return (

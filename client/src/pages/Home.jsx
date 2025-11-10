@@ -1,6 +1,6 @@
 import React from 'react'
-import HeroHome from '../components/HeroHome'
-import RecommendHome from '../components/RecommendHome'
+import HeroHome from '../components/heros/HeroHome'
+import RecommendHome from '../components/recommends/RecommendHome'
 
 
 const Home = () => {

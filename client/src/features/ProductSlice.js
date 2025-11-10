@@ -2,10 +2,13 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   groceryProductCategory: "",
-  searchedViaSearchBar : "",
+  searchedViaSearchBar: "",
+  filteredAssets: [],
+  sortViaOption : "",
+
 };
 
-const userSlice = createSlice({
+const productSlice = createSlice({
   name: 'product',
   initialState,
   reducers: {
@@ -15,8 +18,20 @@ const userSlice = createSlice({
     setSearchedViaSearchBar: (state, action) => {
       state.searchedViaSearchBar = action.payload;
     },
+    setFilteredAssets: (state, action) => {
+      state.filteredAssets = action.payload; 
+    },
+    setSortViaOption : (state , action ) => {
+      state.sortViaOption = action.payload;
+    }
   }
 });
 
-export const { setGroceryProductCategory , setSearchedViaSearchBar} = userSlice.actions;
-export default userSlice.reducer;
+export const { 
+  setGroceryProductCategory, 
+  setSearchedViaSearchBar,
+  setFilteredAssets,
+  setSortViaOption, 
+} = productSlice.actions;
+
+export default productSlice.reducer;

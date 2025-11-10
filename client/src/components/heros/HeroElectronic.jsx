@@ -1,5 +1,5 @@
 import React from 'react'
-import { banners } from '../assets/electronics/assetsElectronics'
+import { banners } from '../../assets/electronics/assetsElectronics'
 
 const HeroElectronic = () => {
   return (

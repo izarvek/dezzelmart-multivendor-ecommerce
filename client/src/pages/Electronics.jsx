@@ -1,7 +1,7 @@
 import React from 'react'
-import HeroElectronic from '../components/HeroElectronic'
-import CardsElectronics from '../components/CardsElectronics'
-import RecommendElectronic from '../components/RecommendElectronic'
+import HeroElectronic from '../components/heros/HeroElectronic'
+import CardsElectronics from '../components/cards/CardsElectronics'
+import RecommendElectronic from '../components/recommends/RecommendElectronic'
 import BannerElectronic from '../components/BannerElectronic'
 import Title from '../components/templates/Title'
 

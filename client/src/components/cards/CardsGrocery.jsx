@@ -1,6 +1,6 @@
 import { PiHandbagSimple } from "react-icons/pi";
 import { GiRoundStar } from "react-icons/gi";
-import { groceryProductAssets } from "../assets/groceries/assetsGrocery";
+import { groceryProductAssets } from "../../assets/groceries/assetsGrocery";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 

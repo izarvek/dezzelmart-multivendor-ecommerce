@@ -2,30 +2,13 @@ import React, { useEffect, useState } from "react";
 import { FaCheckCircle } from "react-icons/fa";
 import Rating from '../components/templates/Rating.jsx'
 import Page404 from './Page404'
-import { useNavigate, useParams } from "react-router-dom";
-import {recommendAssets,recommendEditorAssets, fashionTrendyAssets } from "../assets/fashion/assetsFashion";
-import { menuAccessoriesAssets } from "../assets//accessories/assetsAccessories";
-import { electronicProducts , recomendedProducts } from "../assets/electronics/assetsElectronics";
-import { groceryProductAssets } from "../assets/groceries/assetsGrocery";
+import { useParams } from "react-router-dom";
+import RecommendProductDetail from "../components/recommends/RecommendProductDetail.jsx";
+import { allAssets } from "../components/templates/allAssets.js";
 
 const ProductDetail = () => {
 
   const { urlSlug } = useParams();
-  const navigate = useNavigate();
-
-  const allAssets = [
-    // fashionAssets,
-    ...(recommendAssets || []),
-    ...(recommendEditorAssets || []),
-    ...(fashionTrendyAssets || []),
-    // Accerrosories
-    ...(menuAccessoriesAssets || []),
-    // electronicProducts,
-    ...(recomendedProducts || []),
-    ...(electronicProducts || []),
-    // groceries
-    ...(groceryProductAssets || []),
-  ];
   const product = allAssets.find((product) => product.urlSlug === urlSlug);
   const suggestionProduct = allAssets.filter((items)=> (items.subCategory === product.subCategory || items.category === product.category) && items.urlSlug !== product.urlSlug)
 
@@ -33,11 +16,8 @@ const ProductDetail = () => {
     return <Page404 />;
   }
 
-  const discountedPrice = Math.ceil(product.price * (1 - product.discount/100)).toFixed(2);
-
   const banner = product.image[0];
   const [mainImage, setMainImage] = useState(banner);
-
     useEffect(() => {
     if (banner) {
       setMainImage(banner);
@@ -90,7 +70,7 @@ const ProductDetail = () => {
 
           <div className="border-b-[1px] border-gray-200 mt-4 pb-4 xl:pb-6">
             <div className="flex gap-2 items-baseline">
-              <p className="text-red-600 outfit-semibold text-3xl">${discountedPrice}</p>
+              <p className="text-red-600 outfit-semibold text-3xl">${(product.price * (1 - product.discount/100)).toFixed(2)}</p>
               <p className="line-through text-xl outfit-semibold text-gray-400">
                 ${product.price}
               </p>
@@ -130,34 +110,7 @@ const ProductDetail = () => {
           </div>
         </div>
       </div>
-     <div className="mt-14 bg-gray-50 p-4 rounded-md">
-      <div className="">
-        <h1 className="poppins-regular text-2xl">Customers who viewed this item also viewed</h1>
-      </div>
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 mt-4 gap-4">
-        {
-         suggestionProduct.slice(0 , 5).map((items , i)=> (
-          <div key={i}  onClick={() => navigate(`/product/${items.urlSlug}`)}>
-            <div className="aspect-[5/6] overflow-hidden">
-              <img 
-              className="w-full h-full object-cover object-top hover:scale-105 hover:brightness-105 transition-all duration-500 ease-in-out" 
-              src={items.image[0]} 
-              alt="" 
-              />
-            </div>
-            <div>
-              <h2 className="mt-2 outfit-regular text-2xl">{items.title}</h2>
-              <p className="mt-1 outfit-semibold text-xl">${(items.price*(1 - items.discount/100)).toFixed(2)} <span className="line-through text-base text-gray-500 ml-2">${items.price}</span></p>
-              <div className="mt-1 flex gap-2">
-                 <Rating rating={items.rating}/>
-                 <p className="poppins-semibold text-sm">( {items.rating} )</p>
-              </div>
-            </div>
-          </div>
-         ))
-        }
-      </div>
-     </div>
+       <RecommendProductDetail suggestionProduct={suggestionProduct}  />
     </div>
   );
 };

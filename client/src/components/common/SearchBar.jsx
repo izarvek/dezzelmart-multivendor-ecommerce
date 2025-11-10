@@ -26,7 +26,11 @@ const handleKeyDown = (e) => {
     e.preventDefault();
     // Construct query parameters
     const params = new URLSearchParams();
-    params.append('q', search); 
+    if (search && search.trim() !== '') {
+      params.append('q', search);
+    } else {
+      params.append('q', 'all');
+    }  
     params.append('as', 'on'); 
     params.append('as-show', 'on'); 
     params.append('requestId', requestId);

@@ -1,6 +1,6 @@
 import React from "react";
-import Title from "./templates/Title";
-import { accessoryProduct } from "../assets/accessories/assetsAccessories";
+import Title from "../templates/Title";
+import { accessoryProduct } from "../../assets/accessories/assetsAccessories";
 
 const RecommendAccessory = () => {
   return (

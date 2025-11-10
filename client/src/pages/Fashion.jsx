@@ -1,10 +1,10 @@
 import React from 'react'
-import HeroFashion from '../components/HeroFashion'
+import HeroFashion from '../components/heros/HeroFashion'
 import Title from '../components/templates/Title'
-import RecommendFeaturedFashion from '../components/RecommendFeaturedFashion'
+import RecommendFeaturedFashion from '../components/recommends/RecommendFeaturedFashion'
 import { recommendAssets, recommendEditorAssets } from '../assets/fashion/assetsFashion'
-import RecommendEditorFashion from '../components/RecommendEditorFashion'
-import CardsFashion from '../components/CardsFashion'
+import RecommendEditorFashion from '../components/recommends/RecommendEditorFashion'
+import CardsFashion from '../components/cards/CardsFashion'
 import Newsletter from '../components/common/Newsletter'
 
 const Fashion = () => {

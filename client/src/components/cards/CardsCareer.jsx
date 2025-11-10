@@ -1,5 +1,5 @@
 import React from 'react'
-import { jobOptions } from '../assets/career/assetsCareer'
+import { jobOptions } from '../../assets/career/assetsCareer'
 import { Briefcase, MapPin, DollarSign, Calendar } from 'lucide-react';
 
 const CardsCareer = () => {

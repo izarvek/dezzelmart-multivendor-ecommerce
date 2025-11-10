@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { visitorSlider } from "../assets/visitor/assetsVisitor.js";
+import { visitorSlider } from "../../assets/visitor/assetsVisitor.js";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
 
 const HeroHome = () => {

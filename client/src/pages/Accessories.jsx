@@ -1,7 +1,7 @@
 import React from 'react'
-import HeroAccessories from '../components/HeroAccessories'
-import CardsAccessory from '../components/CardsAccessory'
-import RecommendAccessory from '../components/RecommendAccessory'
+import HeroAccessories from '../components/heros/HeroAccessories'
+import CardsAccessory from '../components/cards/CardsAccessory'
+import RecommendAccessory from '../components/recommends/RecommendAccessory'
 import Newsletter from '../components/common/Newsletter'
 
 const Assessories = () => {

@@ -6,7 +6,7 @@ import { CiUser, CiMail } from "react-icons/ci";
 import { BsFillSendFill } from "react-icons/bs";
 import { banners } from "../assets/career/assetsCareer";
 import Title from "../components/templates/Title";
-import CardsCareer from "../components/CardsCareer";
+import CardsCareer from "../components/cards/CardsCareer";
 
 const Career = () => {
   return (

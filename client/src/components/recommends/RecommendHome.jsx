@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from "react-router-dom";
-import { recoHomeAssets } from '../assets/visitor/assetsVisitor'
+import { recoHomeAssets } from '../../assets/visitor/assetsVisitor'
 
 const RecommendHome = () => {
   return (
