@@ -12,7 +12,7 @@ const SidebarProductListing = () => {
 
   // --- Local State for Filter Criteria ---
   const [selectedBrands, setSelectedBrands] = useState([]);
-  const [searchBrand, setSearchBrand] = useState('');
+  const [searchBrand, setSearchBrand] = useState("");
   const [minDiscount, setMinDiscount] = useState(0);
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [selectedSubCategories, setSelectedSubCategories] = useState([]);
@@ -34,7 +34,9 @@ const SidebarProductListing = () => {
       const barPriceFilter = product.price >= barPrice;
       const minRatingFilter = product.rating >= minRating;
 
-      return searchFilter && discountFilter && barPriceFilter && minRatingFilter ;
+      return (
+        searchFilter && discountFilter && barPriceFilter && minRatingFilter
+      );
     });
 
     if (sortViaOption === "high-to-low") {
@@ -44,33 +46,44 @@ const SidebarProductListing = () => {
     }
 
     dispatch(setFilteredAssets(filteredAssets));
-  }, [searchedViaSearchBar, minDiscount, barPrice, minRating, sortViaOption, dispatch]);
+  }, [
+    searchedViaSearchBar,
+    selectedBrands,
+    minDiscount,
+    barPrice,
+    minRating,
+    sortViaOption,
+    dispatch,
+  ]);
 
   // Filter Selected Brands
   const handleBrandChange = (e) => {
     const { value, checked } = e.target;
     if (checked) {
-      setSelectedBrands((prev) => [...prev, value]);
+      setSelectedBrands((prev) => [...prev, value.toLowerCase()]);
     } else {
-      setSelectedBrands((prev) => prev.filter((brand) => brand !== value));
+      setSelectedBrands((prev) =>
+        prev.filter((brand) => brand !== value.toLowerCase())
+      );
     }
   };
   const handleSearchBrand = (e) => {
-    if(e.key === "Enter"){
+    if (e.key === "Enter") {
       const brandToAdd = searchBrand.trim();
       if (brandToAdd && !selectedBrands.includes(brandToAdd)) {
-      setSelectedBrands((prev) => [...prev, brandToAdd]);
+        setSelectedBrands((prev) => [...prev, brandToAdd.toLowerCase()]);
+      }
+      setSearchBrand("");
     }
-      setSearchBrand('');
-    }
-  }
+  };
   // Filter Shipping Options
   const handleShippingOptions = (e) => {
     const { value, checked } = e.target;
     if (checked) {
       setSelectedShippingOptions((prev) => [...prev, value]);
     } else {
-      setSelectedShippingOptions((prev) => prev.filter((shipping) => shipping !== value)
+      setSelectedShippingOptions((prev) =>
+        prev.filter((shipping) => shipping !== value)
       );
     }
   };
@@ -221,7 +234,7 @@ const SidebarProductListing = () => {
         </ul>
       </div>
       {/* Category */}
-      <div className="mt-4">
+      <div className="mt-4 hidden">
         <h2 className="poppins-medium mb-2">Categories</h2>
         <div className="flex gap-2 mt-1">
           <input type="checkbox" id="fashion" name="category" value="Fashion" />
@@ -259,7 +272,7 @@ const SidebarProductListing = () => {
         </div>
       </div>
       {/* Sub Category*/}
-      <div>
+      <div className="hidden">
         <div className="mt-4  border-gray-200">
           <h3 className="poppins-regular mb-1 text-sm text-gray-700">
             Grocery Sub-Categories
@@ -531,7 +544,7 @@ const SidebarProductListing = () => {
         </div>
       </div>
       {/* Size */}
-      <div className="mt-4">
+      <div className="mt-4 hidden">
         <h2 className="poppins-medium mb-2">Size</h2>
         <div className="flex gap-2 mt-1">
           <input type="checkbox" id="s" name="size" value="S" />

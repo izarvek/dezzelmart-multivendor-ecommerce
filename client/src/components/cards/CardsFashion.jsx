@@ -53,7 +53,7 @@ const CardsFashion = () => {
 
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-20 gap-6">
         {filterProducts().slice(0 , 10).map((product, i) => (
-          <div onClick={() => navigate(`/product/${product.urlSlug}`)}  key={i}>
+          <div onClick={() => {navigate(`/product/${product.urlSlug}`) ,  window.scrollTo({ top: 0, behavior: 'smooth' });}}  key={i}>
             <div  className="relative">
               <div className="w-full aspect-[5/6] overflow-hidden">
                 <img

@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 const RecommendFeaturedFashion = ({ image, title, price , urlSlug }) => {
   const navigate = useNavigate();
   return (
-    <div  onClick={() => navigate(`/product/${urlSlug}`)}>
+    <div  onClick={() => {navigate(`/product/${urlSlug}`) ,  window.scrollTo({top : 0 , behavior : 'smooth'})}}>
       <div className="w-full ">
         <img
           className="rounded w-full h-full object-cover hover:brightness-110  transition-all duration-300 ease-out"

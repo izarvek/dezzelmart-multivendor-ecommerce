@@ -4,12 +4,12 @@ const initialState = {
   groceryProductCategory: "",
   searchedViaSearchBar: "",
   filteredAssets: [],
-  sortViaOption : "",
-
+  sortViaOption: "",
+  addToCartItems: [],
 };
 
 const productSlice = createSlice({
-  name: 'product',
+  name: "product",
   initialState,
   reducers: {
     setGroceryProductCategory: (state, action) => {
@@ -19,19 +19,23 @@ const productSlice = createSlice({
       state.searchedViaSearchBar = action.payload;
     },
     setFilteredAssets: (state, action) => {
-      state.filteredAssets = action.payload; 
+      state.filteredAssets = action.payload;
     },
-    setSortViaOption : (state , action ) => {
+    setSortViaOption: (state, action) => {
       state.sortViaOption = action.payload;
-    }
-  }
+    },
+    setAddToCart: (state, action) => {
+      state.addToCartItems.push(action.payload);
+    },
+  },
 });
 
-export const { 
-  setGroceryProductCategory, 
+export const {
+  setGroceryProductCategory,
   setSearchedViaSearchBar,
   setFilteredAssets,
-  setSortViaOption, 
+  setSortViaOption,
+  setAddToCart, 
 } = productSlice.actions;
 
 export default productSlice.reducer;

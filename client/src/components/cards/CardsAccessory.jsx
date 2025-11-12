@@ -12,7 +12,7 @@ const CardsAccessory = () => {
       />
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8 xl:gap-10 mt-4">
         {menuAccessoriesAssets.map((product, i) => (
-          <div key={i} className="relative overflow-hidden group" onClick={() => navigate(`/product/${product.urlSlug}`)}>
+          <div key={i} className="relative overflow-hidden group" onClick={() => {navigate(`/product/${product.urlSlug}`) , window.scrollTo({top : 0 , behavior : 'smooth'})}}>
             <img
               className="rounded transition-all duration-500 ease-in-out hover:brightness-105 "
               src={product.image}

@@ -15,6 +15,7 @@ const Navbar = () => {
   const dispatch = useDispatch();
   const userToggleProfile = useSelector((state) => state.user.profileMenuOpen);
   const userToggleNotification = useSelector((state) => state.user.profileNotificationsOpen);
+  const cartItems = useSelector((state) => state.product.addToCartItems)
 
   return (
     <>
@@ -69,13 +70,17 @@ const Navbar = () => {
           </div>
            <div>
             <ul className="flex items-center gap-4">
-              <li className="w-6 h-6 relative">
+              <li 
+              onClick={() => navitate('/user-cart')}
+              className="w-6 h-6 relative">
                 <PiShoppingCartThin  className="w-full h-full"/>
                 <div className="absolute w-4 aspect-square bg-gray-700 -top-1 -right-2 rounded-full text-white text-[10px]">
-                  <p className="flex justify-center items-center w-full h-full object-cover">4</p>
+                  <p className="flex justify-center items-center w-full h-full object-cover">{cartItems.length}</p>
                 </div>
               </li>
-              <li onClick={()=> dispatch(toggleProfileNotifications())} className="w-6 h-6 relative">
+              <li 
+              onClick={()=> dispatch(toggleProfileNotifications())} 
+              className="w-6 h-6 relative">
                 <IoIosNotificationsOutline className="w-full h-full "/>
                 <div className="absolute w-2 aspect-square bg-red-700 top-0 right-0 rounded-full"></div>
               </li>
@@ -89,14 +94,13 @@ const Navbar = () => {
 
       </div>
 
-      <div className={`absolute right-4 md:right-0 z-50 transition-all duration-300 ${userToggleProfile ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
-        <UserProfileMenu />
-      </div>
-
       <div className={`absolute right-14 md:right-10 z-50 transition-all duration-300 ${userToggleNotification ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
         <UserNotification/>
       </div>
 
+      <div className={`absolute right-4 md:right-0 z-50 transition-all duration-300 ${userToggleProfile ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
+        <UserProfileMenu />
+      </div>
     </>
   );
 };

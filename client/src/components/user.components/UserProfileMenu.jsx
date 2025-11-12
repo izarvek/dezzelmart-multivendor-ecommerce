@@ -57,7 +57,7 @@ const UserProfileMenu = () => {
         <div className='mt-4 border-b-[1px] border-gray-200 pb-4 '>
            <div className='flex items-center justify-between '>
             <p onClick={()=> {navigate('/user-help') , dispatch(toggleProfileMenu())}} className='cursor-pointer  poppins-medium text-sm'>Help</p>
-            <RxExternalLink  className='cursor-pointer w-5 h-5'/>
+            <RxExternalLink onClick={()=> {navigate('/user-help') , dispatch(toggleProfileMenu())}}  className='cursor-pointer w-5 h-5'/>
            </div>
         </div>
 

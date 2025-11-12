@@ -8,6 +8,7 @@ import Settings from '../pages/user.pages/UserSettings.jsx'
 import Help from '../pages/user.pages/UserHelp.jsx'
 import SignOut from '../pages/user.pages/UserSignOut.jsx'
 import UserToVendor from '../pages/user.pages/UserToVendor.jsx'
+import Cart from '../pages/user.pages/UserCart.jsx'
 
 
 export const authRoutes = [
@@ -24,4 +25,5 @@ export const userProfileRoutes = [
   { path: '/user-help' , element : <Help/>},
   { path: '/user-sign-out' , element : <SignOut/>},
   { path: '/user-to-vendor' , element : <UserToVendor/>},
+  { path: '/user-cart' , element : <Cart/>},
 ]

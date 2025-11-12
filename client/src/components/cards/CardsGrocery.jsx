@@ -32,7 +32,7 @@ const CardsGrocery = () => {
           <div
             key={i}
             className="mb-4"
-            onClick={() => navigate(`/product/${product.urlSlug}`)}
+            onClick={() => {navigate(`/product/${product.urlSlug}`) ,  window.scrollTo({ top: 0, behavior: 'smooth' });}}
           >
             <div className="aspect-[5/4] border-[1px] border-gray-200  rounded-lg py-1 px-3">
               <img
