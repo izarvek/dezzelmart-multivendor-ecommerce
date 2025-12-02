@@ -32,7 +32,7 @@ const RecommendElectronic = () => {
                          ${price}
                       </p>
                       <div className="flex justify-between">
-                        <p className="text-2xl outfit-semibold">${discountPrice}</p>
+                        <p className="text-2xl outfit-semibold">${(product.price*(1 - product.discount/100)).toFixed(2)}</p>
                         <div className="flex gap-3">
                           <FaRegHeart className="w-5 h-5" />
                           <FaHeart className="hidden" /> <BsCart2 className="w-5 h-5" />

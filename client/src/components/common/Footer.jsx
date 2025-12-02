@@ -22,7 +22,7 @@ const Footer = () => {
               <ul className="text-sm space-y-1 text-gray-100">
                 {section.items.map((item, index) => (
                   <li key={index}>
-                    <Link to={item.to} className="hover:underline transition">
+                    <Link to={item.to} onClick={() => window.scrollTo({top: 0 , behavior : 'smooth'})} className="hover:underline transition">
                       {item.text}
                     </Link>
                   </li>

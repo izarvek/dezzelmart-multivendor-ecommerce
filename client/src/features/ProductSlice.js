@@ -6,6 +6,8 @@ const initialState = {
   filteredAssets: [],
   sortViaOption: "",
   addToCartItems: [],
+  addToWishlistItems: [],
+  shippingDetailCalculation : [],
 };
 
 const productSlice = createSlice({
@@ -27,6 +29,24 @@ const productSlice = createSlice({
     setAddToCart: (state, action) => {
       state.addToCartItems.push(action.payload);
     },
+    setRemoveFromCart: (state, action) => {
+        const slugToRemove = action.payload;
+        state.addToCartItems = state.addToCartItems.filter(
+            item => item.urlSlug !== slugToRemove
+        );
+    },
+    setAddToWishlist : (state , action) => {
+      state.addToWishlistItems.push(action.payload)
+    },
+    setRemoveFromWishlist : (state , action) => {
+     const slugToRemove = action.payload;
+     state.addToWishlistItems = state.addToWishlistItems.filter(
+      item => item.urlSlug !== slugToRemove
+     );
+    },
+    setShippingDetailCalculation : (state , action ) => {
+      state.shippingDetailCalculation = action.payload;
+    }
   },
 });
 
@@ -35,7 +55,10 @@ export const {
   setSearchedViaSearchBar,
   setFilteredAssets,
   setSortViaOption,
-  setAddToCart, 
+  setAddToCart,
+  setRemoveFromCart,
+  setAddToWishlist,
+  setShippingDetailCalculation,
 } = productSlice.actions;
 
 export default productSlice.reducer;

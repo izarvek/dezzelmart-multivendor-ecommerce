@@ -1,6 +1,6 @@
 import React from "react";
-import ShoppingCart from "../../components/user.components/ShoppingCart";
-import ShippingDetails from "../../components/user.components/ShippingDetails";
+import UserShoppingCart from "../../components/user.components/UserShoppingCart";
+import UserShippingDetails from "../../components/user.components/UserShippingDetails";
 
 const Cart = () => {
   return (
@@ -12,10 +12,10 @@ const Cart = () => {
       </div>
       <div className="flex md:flex-row flex-col gap-4 mt-4">
         <div className="w-full md:w-[70%]">
-          <ShoppingCart />
+          <UserShoppingCart />
         </div>
         <div className="w-full md:w-[30%]">
-          <ShippingDetails />
+          <UserShippingDetails />
         </div>
       </div>
     </div>

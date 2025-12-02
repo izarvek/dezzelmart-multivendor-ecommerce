@@ -17,11 +17,11 @@ const CardsGrocery = () => {
       <div>
         {groceryProductsToDisplay.length <= 0 && (
           <div className="flex items-center justify-center flex-col mt-20">
-            <h1 class="text-4xl md:text-5xl font-bold text-gray-700">
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-700">
               Product Not Found
             </h1>
-            <div class="h-px w-80 rounded bg-gradient-to-r from-gray-400 to-gray-800 my-5 md:my-7"></div>
-            <p class="md:text-xl text-gray-400 max-w-lg text-center">
+            <div className="h-px w-80 rounded bg-gradient-to-r from-gray-400 to-gray-800 my-5 md:my-7"></div>
+            <p className="md:text-xl text-gray-400 max-w-lg text-center">
              There is not product available for this category.
             </p>
           </div>

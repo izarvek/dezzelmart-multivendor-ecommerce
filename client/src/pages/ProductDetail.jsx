@@ -5,13 +5,15 @@ import Page404 from "./Page404";
 import { RiLoader2Line } from "react-icons/ri";
 import { useParams } from "react-router-dom";
 import RecommendProductDetail from "../components/recommends/RecommendProductDetail.jsx";
-import { allAssets } from "../components/templates/allAssets.js";
-import { setAddToCart } from "../features/ProductSlice.js";
+import { allAssets } from "../components/templates/allAssets.js"; // All Available Assets
+import { setAddToCart , setAddToWishlist} from "../features/ProductSlice.js";
 import { useSelector , useDispatch } from 'react-redux'
 
 const ProductDetail = () => {
   const dispatch = useDispatch()
-  const cartItems = useSelector((state) => state.product.addToCartItems)
+  const cartItems = useSelector((state) => state.product.addToCartItems) // cartItems is all product available in Cart
+  const wishlistItems = useSelector((state) => state.product.addToWishlistItems)
+
   const { urlSlug } = useParams();
   const product = allAssets.find((product) => product.urlSlug === urlSlug);
   const suggestionProduct = allAssets.filter(
@@ -25,6 +27,8 @@ const ProductDetail = () => {
     return <Page404 />;
   }
 
+  const [cartstatus, setCartStatus] = useState("cartidle"); 
+  const [wishstatus, setWishStatus] = useState("wishidle"); 
   const [size, setSize] = useState([]);
 
   const handleSize = (size) => {
@@ -40,32 +44,57 @@ const ProductDetail = () => {
     size, 
     urlSlug
   }
-  const [cartstatus, setCartStatus] = useState("cartidle"); 
-  const [wishstatus, setWishStatus] = useState("wishidle"); 
-  
-  const handleCartClick = () => {
-    if (cartstatus === "cartloading") return; 
-    setCartStatus("cartloading"); 
-    setTimeout(() => {
-      const itemExists = cartItems.some(item => item.urlSlug === urlSlug);
-      if(itemExists){
-        setCartStatus("added")
-        return;
-      }else{
-        dispatch(setAddToCart(cartPayload))
-        setCartStatus("added");
-      }
 
-    }, 2000);
-  };
-  
-  const handleWishClick = () => {
-    if (wishstatus === "wishloading") return;
-    setWishStatus("wishloading"); 
-    setTimeout(() => {
-      setWishStatus("added");
-    }, 2000);
-  };
+const handleCartClick = () => {
+  if (cartstatus === "cartloading") return;
+  // Check if item already in cart
+  const productInCart = cartItems.some(item => item.urlSlug === urlSlug && item.size.join() === size.join());
+  if (productInCart) {
+    setCartStatus("added");
+    return; // Item already in cart with same size
+  }
+
+  setCartStatus("cartloading");
+  setTimeout(() => {
+    dispatch(setAddToCart(cartPayload));
+    setCartStatus("added");
+  }, 1000);
+};
+
+const handleWishClick = () => {
+  if (wishstatus === "wishloading") return;
+
+  // Check if item already in wishlist
+  const isInWishlist = wishlistItems.includes(urlSlug);
+  if (isInWishlist) {
+    setWishStatus("added");
+    return; // Exit early since item is already added
+  }
+
+  setWishStatus("wishloading");
+  setTimeout(() => {
+    dispatch(setAddToWishlist(urlSlug));
+    setWishStatus("added");
+  }, 1000);
+};
+
+useEffect(() => {
+  // Reset statuses when product changes
+  setCartStatus("cartidle");
+  setWishStatus("wishidle");
+  // Check if product is in cart
+  const productInCart = cartItems.some(
+    (item) => item.urlSlug === urlSlug && item.size.join() === size.join()
+  );
+  if (productInCart) {
+    setCartStatus("added");
+  }
+  // Check if product is in wishlist
+  const isInWishlist = wishlistItems.includes(urlSlug);
+  if (isInWishlist) {
+    setWishStatus("added");
+  }
+}, [urlSlug, cartItems, wishlistItems]);
 
   const banner = product.image[0];
   const [mainImage, setMainImage] = useState(banner);
@@ -203,7 +232,7 @@ const ProductDetail = () => {
                   : "Added to Wishlist"}
               </button>
             </div>
-            <button className="border border-gray-400 hover:border-green-500 transition-colors px-4 py-2 outfit-medium rounded text-sm text-gray-700">
+            <button className="border hidden border-gray-400 hover:border-green-500 transition-colors px-4 py-2 outfit-medium rounded text-sm text-gray-700">
               Add to Compare
             </button>
           </div>
