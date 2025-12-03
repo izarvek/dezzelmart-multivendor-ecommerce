@@ -17,6 +17,8 @@ const Navbar = () => {
   const userToggleNotification = useSelector((state) => state.user.profileNotificationsOpen);
   const cartItems = useSelector((state) => state.product.addToCartItems)
 
+  const token = false;
+
   return (
     <>
       {/* Navbar Banner Section  */}
@@ -60,7 +62,7 @@ const Navbar = () => {
         </div>
 
         <div>
-          <div className=" gap-2 font-bold text-gray-700 hidden">
+          <div className={`gap-2 font-bold text-gray-700 ${token ? "hidden" : "flex"}`}>
             <button onClick={()=> navitate('/login')}  className="py-1 poppins-regular px-4 text-sm md:text-base text-gray-100 bg-gray-800 hover:bg-gray-700 rounded-full">
               Sign In
             </button>
@@ -69,7 +71,7 @@ const Navbar = () => {
             </button>
           </div>
            <div>
-            <ul className="flex items-center gap-4">
+            <ul className={`items-center gap-4 ${token ? "flex" : "hidden"}`}>
               <li 
               onClick={() => navitate('/user-cart')}
               className="w-6 h-6 relative">

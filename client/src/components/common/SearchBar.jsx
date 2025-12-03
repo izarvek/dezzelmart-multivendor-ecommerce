@@ -27,7 +27,7 @@ const handleKeyDown = (e) => {
     // Construct query parameters
     const params = new URLSearchParams();
     if (search && search.trim() !== '') {
-      params.append('q', search);
+      params.append('q', search.toLowerCase());
     } else {
       params.append('q', 'all');
     }  
