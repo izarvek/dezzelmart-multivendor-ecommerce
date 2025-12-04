@@ -17,7 +17,7 @@ const Navbar = () => {
   const userToggleNotification = useSelector((state) => state.user.profileNotificationsOpen);
   const cartItems = useSelector((state) => state.product.addToCartItems)
 
-  const token = false;
+  const token = localStorage.getItem('token');
 
   return (
     <>

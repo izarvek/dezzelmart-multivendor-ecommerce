@@ -6,14 +6,17 @@ import { RiLoader2Line } from "react-icons/ri";
 import { useParams } from "react-router-dom";
 import RecommendProductDetail from "../components/recommends/RecommendProductDetail.jsx";
 import { allAssets } from "../components/templates/allAssets.js"; // All Available Assets
-import { setAddToCart , setAddToWishlist} from "../features/ProductSlice.js";
-import { useSelector , useDispatch } from 'react-redux'
+import { setAddToCart, setAddToWishlist } from "../features/ProductSlice.js";
+import { useSelector, useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 
 const ProductDetail = () => {
-  const dispatch = useDispatch()
-  const cartItems = useSelector((state) => state.product.addToCartItems) // cartItems is all product available in Cart
-  const wishlistItems = useSelector((state) => state.product.addToWishlistItems)
-
+  const dispatch = useDispatch();
+  const cartItems = useSelector((state) => state.product.addToCartItems); // cartItems is all product available in Cart
+  const wishlistItems = useSelector(
+    (state) => state.product.addToWishlistItems
+  );
+  const token = localStorage.getItem("token");
   const { urlSlug } = useParams();
   const product = allAssets.find((product) => product.urlSlug === urlSlug);
   const suggestionProduct = allAssets.filter(
@@ -27,8 +30,8 @@ const ProductDetail = () => {
     return <Page404 />;
   }
 
-  const [cartstatus, setCartStatus] = useState("cartidle"); 
-  const [wishstatus, setWishStatus] = useState("wishidle"); 
+  const [cartstatus, setCartStatus] = useState("cartidle");
+  const [wishstatus, setWishStatus] = useState("wishidle");
   const [size, setSize] = useState([]);
 
   const handleSize = (size) => {
@@ -41,60 +44,71 @@ const ProductDetail = () => {
     });
   };
   const cartPayload = {
-    size, 
-    urlSlug
-  }
+    size,
+    urlSlug,
+  };
 
-const handleCartClick = () => {
-  if (cartstatus === "cartloading") return;
-  // Check if item already in cart
-  const productInCart = cartItems.some(item => item.urlSlug === urlSlug && item.size.join() === size.join());
-  if (productInCart) {
-    setCartStatus("added");
-    return; // Item already in cart with same size
-  }
+  const handleCartClick = () => {
+    if (!token) {
+      toast.warn("Please Loging to Add to Cart");
+      return;
+    }
+    if (cartstatus === "cartloading") return;
+    // Check if item already in cart
+    const productInCart = cartItems.some(
+      (item) => item.urlSlug === urlSlug && item.size.join() === size.join()
+    );
+    if (productInCart) {
+      setCartStatus("added");
+      return; // Item already in cart with same size
+    }
 
-  setCartStatus("cartloading");
-  setTimeout(() => {
-    dispatch(setAddToCart(cartPayload));
-    setCartStatus("added");
-  }, 1000);
-};
+    setCartStatus("cartloading");
+    setTimeout(() => {
+      dispatch(setAddToCart(cartPayload));
+      setCartStatus("added");
+    }, 1000);
+  };
 
-const handleWishClick = () => {
-  if (wishstatus === "wishloading") return;
+  const handleWishClick = () => {
+    if (!token) {
+      toast.warn("Please Loging to Add to Widhlist");
+      return;
+    }
+    
+    if (wishstatus === "wishloading") return;
 
-  // Check if item already in wishlist
-  const isInWishlist = wishlistItems.includes(urlSlug);
-  if (isInWishlist) {
-    setWishStatus("added");
-    return; // Exit early since item is already added
-  }
+    // Check if item already in wishlist
+    const isInWishlist = wishlistItems.includes(urlSlug);
+    if (isInWishlist) {
+      setWishStatus("added");
+      return; // Exit early since item is already added
+    }
 
-  setWishStatus("wishloading");
-  setTimeout(() => {
-    dispatch(setAddToWishlist(urlSlug));
-    setWishStatus("added");
-  }, 1000);
-};
+    setWishStatus("wishloading");
+    setTimeout(() => {
+      dispatch(setAddToWishlist(urlSlug));
+      setWishStatus("added");
+    }, 1000);
+  };
 
-useEffect(() => {
-  // Reset statuses when product changes
-  setCartStatus("cartidle");
-  setWishStatus("wishidle");
-  // Check if product is in cart
-  const productInCart = cartItems.some(
-    (item) => item.urlSlug === urlSlug && item.size.join() === size.join()
-  );
-  if (productInCart) {
-    setCartStatus("added");
-  }
-  // Check if product is in wishlist
-  const isInWishlist = wishlistItems.includes(urlSlug);
-  if (isInWishlist) {
-    setWishStatus("added");
-  }
-}, [urlSlug, cartItems, wishlistItems]);
+  useEffect(() => {
+    // Reset statuses when product changes
+    setCartStatus("cartidle");
+    setWishStatus("wishidle");
+    // Check if product is in cart
+    const productInCart = cartItems.some(
+      (item) => item.urlSlug === urlSlug && item.size.join() === size.join()
+    );
+    if (productInCart) {
+      setCartStatus("added");
+    }
+    // Check if product is in wishlist
+    const isInWishlist = wishlistItems.includes(urlSlug);
+    if (isInWishlist) {
+      setWishStatus("added");
+    }
+  }, [urlSlug, cartItems, wishlistItems]);
 
   const banner = product.image[0];
   const [mainImage, setMainImage] = useState(banner);
@@ -220,10 +234,13 @@ useEffect(() => {
             <div className="bg-[#496e51] text-sm hover:bg-[#6c9574] transition-colors duration-200 text-white poppins outfit-regular py-2 px-6 rounded flex-shrink-0 flex items-center gap-2">
               <button>Buy Now</button>
             </div>
-            <div className="border border-gray-400 hover:border-green-500 transition-colors px-4 py-2 outfit-medium rounded text-sm text-gray-700 flex items-center gap-2"
-             onClick={handleWishClick}
+            <div
+              className="border border-gray-400 hover:border-green-500 transition-colors px-4 py-2 outfit-medium rounded text-sm text-gray-700 flex items-center gap-2"
+              onClick={handleWishClick}
             >
-              {wishstatus === "wishloading" ? (<RiLoader2Line className="w-5 h-5 animate-spin" />) : null}
+              {wishstatus === "wishloading" ? (
+                <RiLoader2Line className="w-5 h-5 animate-spin" />
+              ) : null}
               <button>
                 {wishstatus === "wishidle"
                   ? "Add to Wishlist"

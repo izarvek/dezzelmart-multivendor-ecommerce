@@ -15,13 +15,13 @@ import FAQ from "../pages/FAQ.jsx";
 
 export const publicRoutes = [
   // Category Routes
-  { path: "/", element: <Home /> },
   { path: "/fashion", element: <Fashion /> },
   { path: "/grocery", element: <Grocery /> },
   { path: "/accessories", element: <Accessories /> },
   { path: "/electronics", element: <Electronics /> },
-
+  
   // Navbar Routes
+  { path: "/", element: <Home /> },
   { path: "/explore", element: <Home /> },
   { path: "/blogs", element: <Blogs /> },
   { path: "/offers", element: <Offers /> },
