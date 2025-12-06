@@ -7,9 +7,12 @@ import { FiLoader } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import api from "../../utils/Axios";
+import { useDispatch } from "react-redux";
+import { setUserDetail } from "../../features/UserSlice";
 
 const UserLogin = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -43,12 +46,13 @@ const UserLogin = () => {
         password: formData.password,
       });
 
-      localStorage.setItem('token', response.data.token)
-      navigate("/");
-
+      localStorage.setItem("token", response.data.token);
+      // Dispatch user data to Redux immediately after login
+      dispatch(setUserDetail(response.data.user));
+      navigate("/user-account");
     } catch (err) {
       const errorMessage =
-      err.response?.data?.message || "Login failed. Please try again.";
+        err.response?.data?.message || "Login failed. Please try again.";
       setError(errorMessage);
     } finally {
       setLoading(false);

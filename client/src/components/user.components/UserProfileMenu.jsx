@@ -3,11 +3,13 @@ import avatar from '../../assets/fashion/banner-01-1.jpg'
 import { PiUserSwitchLight } from "react-icons/pi";
 import { RxExternalLink } from "react-icons/rx";
 import { useNavigate } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
+import {useSelector, useDispatch } from 'react-redux'
 import { toggleProfileMenu } from '../../features/UserSlice'
 const UserProfileMenu = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const user = useSelector((state) => state.user.userDetail);
+  // console.log(user);
   return (
     <div className='sm:px-8 md:px-10 lg:px-20 xl:px-40 flex justify-end mt-1 '>
       <div className='px-8 rounded-sm border-[1px] border-gray-200 shadow-sm bg-white pt-4'>
@@ -17,12 +19,12 @@ const UserProfileMenu = () => {
         <div 
           onClick={()=> {navigate('/user-account') , dispatch(toggleProfileMenu())}} 
           className='w-16 h-16 rounded-full overflow-hidden cursor-pointer'>
-          <img  className='w-full h-full object-cover' src={avatar} alt="" />
+          <img  className='w-full h-full object-cover' src={ user?.avatar || avatar} alt="" />
         </div>
 
         <div className='text-center  mt-4'>
-          <h2 className='poppins-regular'>Aadhi Sharma</h2>
-          <p className='poppins-light text-gray-500 text-sm'>aadhisharma167@gmail.com</p>
+          <h2 className='poppins-regular'>{user?.userInfo?.fullname ? user?.userInfo?.fullname : "Update Name"}</h2>
+          <p className='poppins-light text-gray-500 text-sm'>{user?.email ? user?.email : "update email"}</p>
         </div>
 
         <div className='bg-gradient-to-r from-blue-500 via-blue-600 to-blue-900  hover:from-blue-600 hover:via-blue-700 hover:to-blue-800 mt-4 py-2 px-10 rounded-full text-white poppins-semibold text-sm cursor-pointer'>

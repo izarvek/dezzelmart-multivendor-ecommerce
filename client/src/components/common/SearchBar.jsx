@@ -13,7 +13,7 @@ import { setSearchedViaSearchBar } from "../../features/ProductSlice.js";
 const SearchBar = () => {
   const inputRef = useRef(null);
   const requestId = uuidv4();
-  const [active, setActive] = useState("Fashion");
+  const [active, setActive] = useState("");
   const [focused, setFocused] = useState(false);
   const [search, setSearch] = useState("");
   const [filteredSuggestions, setFilteredSuggestions] = useState([]);

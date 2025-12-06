@@ -4,7 +4,7 @@ const initialState = {
     profileMenuOpen : false ,
     profileNotificationsOpen : false ,
     viewOrderOpen : false,
-    editProfileOpen : false,
+    userDetail : null,
 };
 
 const userSlice = createSlice({
@@ -20,10 +20,10 @@ const userSlice = createSlice({
         toggleViewOrder : (state) => {
             state.viewOrderOpen = !state.viewOrderOpen;
         },
-        toggleEditProfile : (state) => {
-            state.editProfileOpen = !state.editProfileOpen;
-        },
+        setUserDetail : (state , action) => {
+            state.userDetail = action.payload ;
+        }
     }
 }); 
-export const { toggleProfileMenu , toggleProfileNotifications , toggleViewOrder , toggleEditProfile} = userSlice.actions ;
+export const { toggleProfileMenu , toggleProfileNotifications , toggleViewOrder , toggleEditProfile , setUserDetail} = userSlice.actions ;
 export default userSlice.reducer ;

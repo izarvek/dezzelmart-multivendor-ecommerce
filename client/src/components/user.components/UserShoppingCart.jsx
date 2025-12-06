@@ -28,6 +28,7 @@ const UserShoppingCart = () => {
       })
       .filter(Boolean);
   });
+  console.log(allCartProduct);
 
   const subTotal = allCartProduct.reduce(
     (acc, product) =>
@@ -182,7 +183,7 @@ const UserShoppingCart = () => {
       )}
       <div className="mt-1 flex justify-between p-2 border-[1px] rounded-b-lg border-gray-200 poppins-medium">
         {<h2>Total Products : {allCartProduct.length}</h2>}
-        <button className="bg-blue-500 poppins-regular text-sm text-white px-2 py-1 rounded-full">
+        <button className="bg-blue-600 hover:bg-blue-500 shadow-inner poppins-regular text-sm text-white px-2 py-1 rounded-full">
           Save Items
         </button>
       </div>

@@ -16,6 +16,7 @@ const Navbar = () => {
   const userToggleProfile = useSelector((state) => state.user.profileMenuOpen);
   const userToggleNotification = useSelector((state) => state.user.profileNotificationsOpen);
   const cartItems = useSelector((state) => state.product.addToCartItems)
+  const user = useSelector((state) => state.user.userDetail);
 
   const token = localStorage.getItem('token');
 
@@ -88,7 +89,7 @@ const Navbar = () => {
               </li>
               <li 
               onClick={() => {dispatch(toggleProfileMenu()) , userToggleNotification && dispatch(toggleProfileNotifications()) }} className="w-6 aspect-squar rounded-full overflow-hidden z-50">
-                <img className="w-full h-full object-cover object-top"  src={avatar} alt="" />
+                <img className="w-full h-full object-cover object-top"  src={user?.avatar ? user?.avatar : avatar}  alt="" />
               </li>
             </ul>
            </div>
